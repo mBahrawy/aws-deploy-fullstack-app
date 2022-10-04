@@ -45,9 +45,13 @@ jobs:
       - aws-cli/setup
       - checkout
       - run:
-          name: Deploy App.
+          name: Deploy Frontend Application
           command: |
             npm run frontend:deploy
+      - run:
+          name: Deploy Backend Application
+          command: |
+            npm run api:deploy
             
 workflows:
   udagram:
