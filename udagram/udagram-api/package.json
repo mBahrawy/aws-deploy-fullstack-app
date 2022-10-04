@@ -11,11 +11,10 @@
     "tsc": "npx tsc",
     "dev": "npx ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npx tsc && node server.js",
-    "clean": "rimraf www/ || true",
+    "clean": "rm -rf www/ || true",
     "deploy": "npm run build && eb list && eb use M2gdi-env && eb deploy",
-    "build": "rimraf node_modules && npm cache clean --force && npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
+    "build": "rm -rf node_modules && npm cache clean --force && npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rimraf": "./node_modules/rimraf/bin.js"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",
