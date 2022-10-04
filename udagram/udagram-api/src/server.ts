@@ -1,31 +1,35 @@
 import * as dotenv from "dotenv";
 import cors from 'cors';
+
+
 import express from "express";
+
 import { sequelize } from "./sequelize";
+import { config } from './config/config'
 
 import { IndexRouter } from "./controllers/v0/index.router";
 
 import bodyParser from "body-parser";
-import { V0_FEED_MODELS, V0_USER_MODELS } from "./controllers/v0/model.index";
+// import { V0_FEED_MODELS, V0_USER_MODELS } from "./controllers/v0/model.index";
 
 (async () => {
   dotenv.config();
   
-  try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
+  // try {
+  //   await sequelize.authenticate();
+  //   console.log("Connection has been established successfully.");
+  // } catch (error) {
+  //   console.error("Unable to connect to the database:", error);
+  // }
 
-  await sequelize.addModels(V0_FEED_MODELS);
-  await sequelize.addModels(V0_USER_MODELS);
-  await sequelize.sync();
+  // await sequelize.addModels(V0_FEED_MODELS);
+  // await sequelize.addModels(V0_USER_MODELS);
+  // await sequelize.sync();
 
   console.log("Database Connected");
 
   const app = express();
-  const port = 8080;
+  const port = config.port;
 
   app.use(bodyParser.json());
 
