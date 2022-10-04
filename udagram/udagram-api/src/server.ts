@@ -29,7 +29,7 @@ import bodyParser from "body-parser";
   console.log("Database Connected");
 
   const app = express();
-  const port = config.port;
+  const port = process.env.PORT;
 
   app.use(bodyParser.json());
 
